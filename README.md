@@ -22,7 +22,7 @@ Please join my discord : https://discord.gg/kvSwVzD8Rd
 - [es_extended] or [qb-core]
 - [ox_inventory] or [qb-inventory]
 - [ox_target] or [qb-target]
-- [qb-lockpick](https://github.com/Sna-aaa/qb-lockpick)
+- [lockpick](https://github.com/Sna-aaa/lockpick)
 
 ## Installation for QBCore
 - Delete qb-vehiclekeys from qbcore
