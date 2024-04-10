@@ -64,6 +64,11 @@ Please join my discord : https://discord.gg/kvSwVzD8Rd
 		}
 	},
 ```
+## Bridge
+The bridge is used to make the script multi framework. The bridge support at the moment
+- QBCore with qb-inventory qb-menu and qb-target
+- ESX with ox_inventory ox_lib menu and ox_target
+For any other combination you will need to edit yourself the bridge to adapt it. So for QBcore with ox_inventory you need to take every line with ox_inventory from the ESX bridge and insert them into the QBCore bridge.
 
 ## Integration into your framework
 Basically this script needs some event to be triggered at some points, 2 client events are available
