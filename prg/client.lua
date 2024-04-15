@@ -32,7 +32,7 @@ local function AttemptPoliceAlert(type)
             chance = Config.PoliceNightAlertChance
         end
         if math.random() <= chance then
-            PoliceAlert(Lang:t('message.police', {value = type}))
+            PoliceAlert(Lang:t('message.police', type))
         end
         AlertSend = true
         SetTimeout(Config.AlertCooldown, function()
@@ -348,10 +348,14 @@ end
 
 -- Events
 -- Backwards Compatibility ONLY -- Remove at some point --
-RegisterNetEvent('vehiclekeys:client:SetOwner', function(plate)
+RegisterNetEvent('qb-vehiclekeys:client:SetOwner', function(plate)
     TriggerServerEvent('sna-vehiclekeys:server:GiveTempKey', plate)
 end)
 -- Backwards Compatibility ONLY -- Remove at some point --
+
+RegisterNetEvent('vehiclekeys:client:SetOwner', function(plate)
+    TriggerServerEvent('sna-vehiclekeys:server:GiveTempKey', plate)
+end)
 
 RegisterNetEvent('sna-vehiclekeys:client:BuyVehicle', function(plate, model)
     TriggerServerEvent('sna-vehiclekeys:server:BuyVehicle', plate, GetLabelText(GetDisplayNameFromVehicleModel(model)))
