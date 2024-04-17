@@ -35,6 +35,10 @@ function GetPlate(vehicle)
     return QBCore.Functions.GetPlate(vehicle)
 end
 
+function Trim(plate)
+    return QBCore.Shared.Trim(plate)
+end
+
 function GetClosestVehicle()
     return QBCore.Functions.GetClosestVehicle()
 end

@@ -88,7 +88,6 @@ local function ToggleVehicleLocks(veh)
         if not isBlacklistedVehicle(veh) then
 			ServerCallback('sna-vehiclekeys:server:HasKey', function(result)
 				if result then
-                    --TriggerEvent('table', result)
 					local ped = PlayerPedId()
 					local vehLockStatus = GetVehicleDoorLockStatus(veh)
 	
@@ -349,16 +348,16 @@ end
 -- Events
 -- Backwards Compatibility ONLY -- Remove at some point --
 RegisterNetEvent('qb-vehiclekeys:client:SetOwner', function(plate)
-    TriggerServerEvent('sna-vehiclekeys:server:GiveTempKey', plate)
+    TriggerServerEvent('sna-vehiclekeys:server:GiveTempKey', Trim(plate))
 end)
 -- Backwards Compatibility ONLY -- Remove at some point --
 
 RegisterNetEvent('vehiclekeys:client:SetOwner', function(plate)
-    TriggerServerEvent('sna-vehiclekeys:server:GiveTempKey', plate)
+    TriggerServerEvent('sna-vehiclekeys:server:GiveTempKey', Trim(plate))
 end)
 
 RegisterNetEvent('sna-vehiclekeys:client:BuyVehicle', function(plate, model)
-    TriggerServerEvent('sna-vehiclekeys:server:BuyVehicle', plate, GetLabelText(GetDisplayNameFromVehicleModel(model)))
+    TriggerServerEvent('sna-vehiclekeys:server:BuyVehicle', Trim(plate), GetLabelText(GetDisplayNameFromVehicleModel(model)))
 end)
 
 RegisterNetEvent('sna-vehiclekeys:client:GiveKeyMenu', function(data)

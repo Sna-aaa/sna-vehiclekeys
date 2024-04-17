@@ -47,6 +47,10 @@ function GetPlate(vehicle)
     return ESX.Math.Trim(GetVehicleNumberPlateText(vehicle))
 end
 
+function Trim(plate)
+    return ESX.Math.Trim(plate)
+end
+
 function GetClosestVehicle()
     return ESX.Game.GetClosestVehicle()
 end
