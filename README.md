@@ -37,16 +37,42 @@ Please join my discord : https://discord.gg/kvSwVzD8Rd
 ```lua
     vehiclekey                   = { name = 'vehiclekey', label = 'Vehicle key', weight = 10, type = 'item', image = 'vehiclekey.png', unique = true, useable = true, shouldClose = true, combinable = nil, description = "This is a car key, take good care of it, if you lose it you probably won't be able to use your car" },
 ```
-- Add item info to qb-inventory\html\js\app.js around line 395 in function generateDescription
+
+Depending of your qb-inventory version some changes may or may not be required
+- Older version : 
+- - Add item info to qb-inventory\html\js\app.js in function FormatItemInfo
+```js
+        } else if (itemData.name == "vehiclekey") {                                         //Change Add
+            $(".item-info-title").html('<p>' + itemData.info.model + '</p>');               //Change Add
+            $(".item-info-description").html('<p>Plate : ' + itemData.info.plate + '</p>'); //Change Add
+```
+- Mid version :
+- - Add item info to qb-inventory\html\js\app.js around line 395 in function generateDescription
 ```js
         case "labkey":
             return `<p>Lab: ${itemData.info.lab}</p>`;
         case "vehiclekey":                                                                      //Change Add
-                return `<p><strong>Car: </strong><span>${itemData.info.model}</span></p>
+                return `<p><strong>Car: </strong><span>${itemData.info.model}</span></p>        
                 <p><strong>Plate: </strong><span>${itemData.info.plate}</span></p>`;            //Change Add
         default:
             return itemData.description;
 ```
+- Latest version : 
+- - Modify the line 861 from qb-inventory/html/app.js in generateTooltipContent
+```js
+            if (item.info && Object.keys(item.info).length > 0) {
+                for (const [key, value] of Object.entries(item.info)) {
+                    if (key !== "description" && key !== "lock") {          //Change
+                        let valueStr = value;
+                        if (key === "attachments") {
+                            valueStr = Object.keys(value).length > 0 ? "true" : "false";
+                        }
+                        content += `<div class="tooltip-info"><span class="tooltip-info-key">${this.formatKey(key)}:</span> ${valueStr}</div>`;
+                    }
+                }
+            }
+```
+
 
 ## Installation for ESX
 - Copy the vehiclekeys image in img folder into ox_inventory\web\images
